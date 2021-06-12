@@ -55,9 +55,9 @@ class TestPage implements ActionListener{
 					PreparedStatement statement=null;
 					try {
 
-						conn= DriverManager.getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+						conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
 						statement = conn
-								.prepareStatement("update students set marks=?, attempted=? where rollNo=?");
+								.prepareStatement("update student set marks=?, attempted=? where rollNo=?");
 						statement.setString(1, String.valueOf(res));
 						statement.setString(2, "yes");
 						statement.setString(3, rollno);
@@ -91,7 +91,7 @@ class TestPage implements ActionListener{
 		};
 		timer.scheduleAtFixedRate(task, 0, 1000);
 
-		conn= DriverManager.getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+		conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
 		Statement statement=conn.createStatement();
 		ResultSet rs=statement.executeQuery("select * from questions");
 		while(rs.next()){
@@ -191,9 +191,9 @@ class TestPage implements ActionListener{
 	private void submit() throws SQLException {
 		frame.dispose();
 		JOptionPane.showMessageDialog(frame, "Test Submitted Successfully."+"\n"+"YOUR SCORE :"+String.valueOf(res));
-		Connection co= DriverManager.getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+		Connection co= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
 		PreparedStatement statement = co
-				.prepareStatement("update students set marks=?, attempted=? where rollNo=?");
+				.prepareStatement("update student set marks=?, attempted=? where rollNo=?");
 		statement.setString(1, String.valueOf(res));
 		statement.setString(2, "yes");
 		statement.setString(3, rollno);

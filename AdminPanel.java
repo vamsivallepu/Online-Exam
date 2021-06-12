@@ -91,12 +91,14 @@ public class AdminPanel implements ActionListener {
 		JLabel mailId = new JLabel("Email     : " + email);
 		mailId.setFont(new Font("Consolas", Font.BOLD, 20));
 
-		JButton edit = new JButton("Edit Details");
+		JButton test = new JButton("New test");
+		test.setFont(new Font("consolas", Font.BOLD, 20));
+		test.addActionListener(this);
 
 		dataPanel.add(nm);
 		dataPanel.add(userNm);
 		dataPanel.add(mailId);
-		dataPanel.add(edit);
+		dataPanel.add(test);
 		AdminInfo.add(dataPanel);
 
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -121,9 +123,9 @@ public class AdminPanel implements ActionListener {
 			}
 			row=0;
 			Connection conn= DriverManager
-					.getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+					.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
 			Statement stmt=conn.createStatement();
-			ResultSet rs=stmt.executeQuery("select rollNo, name, year, branch, marks from students order by rollNo");
+			ResultSet rs=stmt.executeQuery("select rollNo, name, year, branch, marks from student order by rollNo");
 			while(rs.next()){
 				tableModel.insertRow(row++, new Object[] { rs.getString("rollNo"), rs.getString("name"), rs.getString("year"), rs.getString("branch"), rs.getInt("marks") });
 

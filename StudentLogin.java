@@ -66,17 +66,20 @@ class StudentLogin extends JFrame implements ActionListener {
             ResultSet res = null;
             try {
                 conn = DriverManager
-                        .getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+                        .getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
                 PreparedStatement statement = conn
-                        .prepareStatement("select name, rollNo, year, branch, password from students where rollNo =?");
+                        .prepareStatement("select name, rollNo, year, branch, password from student where rollNo =?");
                 statement.setString(1, roll);
                 res = statement.executeQuery();
-                String name = res.getString("name");
-                String rollNo = res.getString("rollNo");
-                String year = res.getString("year");
-                String branch = res.getString("branch");
-                String pass = res.getString("password");
+                String name=null, rollNo=null, year=null, branch=null, pass=null;
+                while(res.next()){
+                    name = res.getString("name");
+                    rollNo = res.getString("rollNo");
+                    year = res.getString("year");
+                    branch = res.getString("branch");
+                    pass = res.getString("password");
 //                System.out.println(username + " " + pass);
+                }
                 if (roll.equalsIgnoreCase(rollNo) && pwdText.equalsIgnoreCase(pass)) {
 //                    System.out.println("Login Successful");
                     new StudentPanel(rollNo, name, branch, year);

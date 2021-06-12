@@ -66,15 +66,18 @@ class AdminLogin extends JFrame implements ActionListener {
             ResultSet res = null;
             try {
                 conn = DriverManager
-                        .getConnection("jdbc:sqlite:/C:\\Users\\vamsivallepu\\Downloads\\Micro-Project-master\\Quiz\\src\\test.db");
+                        .getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
                 PreparedStatement statement = conn
                         .prepareStatement("select name, username, password, email from admin where username =?");
                 statement.setString(1, userText);
                 res = statement.executeQuery();
-                String name = res.getString("name");
-                String username = res.getString("username");
-                String pass = res.getString("password");
-                String email = res.getString("email");
+                String name=null, username = null, pass=null, email=null;
+                while(res.next()){
+                    name = res.getString("name");
+                    username = res.getString("username");
+                    pass = res.getString("password");
+                    email = res.getString("email");
+                }
 //                System.out.println(username + " " + pass);
                 if (userText.equalsIgnoreCase(username) && pwdText.equalsIgnoreCase(pass)) {
                     new AdminPanel(name, username, email).setStudent();
