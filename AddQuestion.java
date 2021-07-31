@@ -126,7 +126,7 @@ public class AddQuestion implements ActionListener {
         }
     }
     void saveToDb(String question, String option1, String option2, String option3,String option4,String answer) throws SQLException {
-        conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+        conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
         PreparedStatement statement= conn.prepareStatement("insert into questions values(?,?,?,?,?,?,?);");
         statement.setInt(1, id++);
         statement.setString(2, question);

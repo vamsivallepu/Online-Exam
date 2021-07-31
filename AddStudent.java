@@ -82,7 +82,7 @@ public class AddStudent extends JFrame implements ActionListener {
 //			System.out.println(Integer.parseInt((String) yearTextField.getSelectedItem()));
 			try{
 				Connection conn= DriverManager
-						.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+						.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
 				PreparedStatement statement = conn
 						.prepareStatement("insert into student(name, rollNo, year, branch, password) values(?,?,?,?,?);");
 				statement.setString(1, nameTextField.getText());

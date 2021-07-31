@@ -49,6 +49,7 @@ public class Index implements ActionListener {
         pane.add(student);
 //        frame.pack();
         frame.setSize(new Dimension(1920, 1080));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("4777952.png")));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }

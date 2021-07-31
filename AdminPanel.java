@@ -19,6 +19,7 @@ public class AdminPanel implements ActionListener {
 	JMenuBar menuBar;
 	JMenu menu;
 	JMenuItem addStudent,addAdmin, close;
+	JButton test;
 	int row=0;
 
 	public AdminPanel(){
@@ -70,15 +71,12 @@ public class AdminPanel implements ActionListener {
 		tableModel.addColumn("Marks");
 //		tableModel.insertRow(0, new Object[] { "Roll No.","Name", , "CSE", 10});
 //		tableModel.insertRow(0, new Object[] { "19BQ1A05N5", "Vamsi Krishna", 1, "CSE", 10 });
-		JLabel label = new JLabel();
+
 		this.name = name;
 		this.username = username;
 		this.email = email;
 
-		label.setIcon(new ImageIcon(
-				new ImageIcon("E:\\test.png").getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT)));
 		AdminInfo.setLayout(new FlowLayout());
-		AdminInfo.add(label);
 		JPanel dataPanel = new JPanel();
 		dataPanel.setLayout(new GridLayout(4, 1));
 
@@ -91,7 +89,7 @@ public class AdminPanel implements ActionListener {
 		JLabel mailId = new JLabel("Email     : " + email);
 		mailId.setFont(new Font("Consolas", Font.BOLD, 20));
 
-		JButton test = new JButton("New test");
+		test = new JButton("New test");
 		test.setFont(new Font("consolas", Font.BOLD, 20));
 		test.addActionListener(this);
 
@@ -123,7 +121,7 @@ public class AdminPanel implements ActionListener {
 			}
 			row=0;
 			Connection conn= DriverManager
-					.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+					.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
 			Statement stmt=conn.createStatement();
 			ResultSet rs=stmt.executeQuery("select rollNo, name, year, branch, marks from student order by rollNo");
 			while(rs.next()){
@@ -146,7 +144,26 @@ public class AdminPanel implements ActionListener {
 		else if(e.getSource()==close){
 			frame.dispose();
 		}
+		else if(e.getSource()==test){
+			try {
+				clearTable();
+			} catch (SQLException throwables) {
+				throwables.printStackTrace();
+			}
+			new AddQuestion();
+		}
 
+	}
+
+	private void clearTable() throws SQLException {
+		Connection conn= DriverManager
+				.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
+		Statement stmt=conn.createStatement();
+		stmt.executeUpdate("delete from questions");
+
+		Statement stmt2=conn.createStatement();
+		stmt.executeUpdate("update student set marks=NULL, attempted=NULL");
+		conn.close();
 	}
 
 	public static void main(String[] args) {

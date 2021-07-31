@@ -75,7 +75,7 @@ public class StudentPanel implements ActionListener {
         title.setFont(new Font("sans serif", Font.PLAIN, 50));
         title.setBounds(570, 30, 600, 70);
 
-        conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+        conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
         Statement statement=conn.createStatement();
         ResultSet rs=statement.executeQuery("select * from questions");
         if(!rs.next()){
@@ -100,7 +100,7 @@ public class StudentPanel implements ActionListener {
             statement.close();
             conn.close();
 
-            conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+            conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
             PreparedStatement stmt= conn.prepareStatement("select marks, attempted from student where rollNo=?");
             stmt.setString(1, rollNo);
             ResultSet result=stmt.executeQuery();

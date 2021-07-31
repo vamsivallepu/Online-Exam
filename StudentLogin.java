@@ -66,7 +66,7 @@ class StudentLogin extends JFrame implements ActionListener {
             ResultSet res = null;
             try {
                 conn = DriverManager
-                        .getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+                        .getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
                 PreparedStatement statement = conn
                         .prepareStatement("select name, rollNo, year, branch, password from student where rollNo =?");
                 statement.setString(1, roll);

@@ -20,7 +20,7 @@ class TestPage implements ActionListener{
 	StudentPanel student;
 	ArrayList<String> id, question, option1, option2, option3, option4, ans;
 	Iterator idi, it, o1, o2, o3, o4, ai;
-	JLabel quest;
+	JTextArea quest;
 	JRadioButton opt1, opt2, opt3, opt4;
 	ButtonGroup bg;
 	public  TestPage(JPanel details, int r, String rollNo, StudentPanel student) throws SQLException {
@@ -55,7 +55,7 @@ class TestPage implements ActionListener{
 					PreparedStatement statement=null;
 					try {
 
-						conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+						conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
 						statement = conn
 								.prepareStatement("update student set marks=?, attempted=? where rollNo=?");
 						statement.setString(1, String.valueOf(res));
@@ -91,7 +91,7 @@ class TestPage implements ActionListener{
 		};
 		timer.scheduleAtFixedRate(task, 0, 1000);
 
-		conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+		conn= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
 		Statement statement=conn.createStatement();
 		ResultSet rs=statement.executeQuery("select * from questions");
 		while(rs.next()){
@@ -118,7 +118,7 @@ class TestPage implements ActionListener{
 		n=question.size();
 		main=new JPanel();
 		main.setLayout(null);
-		quest= new JLabel();
+		quest= new JTextArea(3,1);
 		bg=new ButtonGroup();
 		opt1=new JRadioButton();
 		opt2=new JRadioButton();
@@ -128,18 +128,23 @@ class TestPage implements ActionListener{
 		bg.add(opt2);
 		bg.add(opt3);
 		bg.add(opt4);
-		quest.setFont(new Font("Consolas", Font.BOLD, 35));
+		quest.setFont(new Font("Consolas", Font.BOLD, 33));
 		opt1.setFont(new Font("Consolas", Font.BOLD, 30));
 		opt2.setFont(new Font("Consolas", Font.BOLD, 30));
 		opt3.setFont(new Font("Consolas", Font.BOLD, 30));
 		opt4.setFont(new Font("Consolas", Font.BOLD, 30));
 
-		quest.setBounds(30,20, 1000, 50);
-		opt1.setBounds(30, 100, 220, 40);
-		opt2.setBounds(500, 100, 220, 40);
-		opt3.setBounds(30, 170, 220, 40);
-		opt4.setBounds(500, 170, 220, 40);
+		quest.setBounds(30,20, 1490, 100);
+		opt1.setBounds(30, 120, 500, 40);
+		opt2.setBounds(550, 120, 500, 40);
+		opt3.setBounds(30, 190, 500, 40);
+		opt4.setBounds(550, 190, 500, 40);
 
+		quest.setLineWrap(true);
+		quest.setWrapStyleWord(true);
+		quest.setEditable(false);
+
+		quest.setBackground(new Color(72, 169, 166));
 		opt1.setBackground(new Color(72, 169, 166));
 		opt2.setBackground(new Color(72, 169, 166));
 		opt3.setBackground(new Color(72, 169, 166));
@@ -149,7 +154,7 @@ class TestPage implements ActionListener{
 		nextQuestion();
 		n--;
 
-		main.setBounds(380, 275, 900, 300);
+		main.setBounds(20, 275, 1500, 300);
 		main.setBackground(new Color(72, 169, 166));
 		main.setBorder(new LineBorder(Color.black, 4));
 
@@ -191,7 +196,7 @@ class TestPage implements ActionListener{
 	private void submit() throws SQLException {
 		frame.dispose();
 		JOptionPane.showMessageDialog(frame, "Test Submitted Successfully."+"\n"+"YOUR SCORE :"+String.valueOf(res));
-		Connection co= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6417854","sql6417854","sWNAI8YF3C");
+		Connection co= DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6428491","sql6428491","k6GmYjpDhE");
 		PreparedStatement statement = co
 				.prepareStatement("update student set marks=?, attempted=? where rollNo=?");
 		statement.setString(1, String.valueOf(res));
